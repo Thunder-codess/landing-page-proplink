@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-neutral-950 antialiased;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #09090b;
+  color: white;
+}
+
+/* thin scrollbar for mock areas */
+.thin-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #e4e4e7;
+  border-radius: 999px;
+}
+
+/* subtle grid backdrop */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, #f4f4f5 1px, transparent 1px),
+    linear-gradient(to bottom, #f4f4f5 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(#e4e4e7 1px, transparent 1px);
+  background-size: 20px 20px;
+}
