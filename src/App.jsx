@@ -348,7 +348,7 @@ function PublicPageMockup() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.8, ease }}
-      className="relative rounded-2xl border border-white/10 bg-night-850 shadow-night overflow-hidden"
+      className="relative overflow-hidden rounded-[20px] border border-white/10 bg-night-850 shadow-night"
     >
       <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
         <div className="flex gap-1.5">
@@ -365,71 +365,53 @@ function PublicPageMockup() {
         <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-medium border border-white/10 bg-white/5 text-fog rounded-md px-2 py-1"><Copy size={11} /> Share</span>
       </div>
 
-      <div className="p-4 sm:p-6">
-        {/* gallery */}
-        <div className="grid grid-cols-3 gap-2">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop" alt="House exterior" className="col-span-3 sm:col-span-2 h-[220px] sm:h-[300px] w-full object-cover rounded-xl border border-white/10" loading="lazy" />
-          <div className="hidden sm:grid grid-rows-2 gap-2">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80&auto=format&fit=crop" alt="Living room" className="h-[146px] w-full object-cover rounded-xl border border-white/10" loading="lazy" />
-            <div className="relative">
-              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80&auto=format&fit=crop" alt="Bedroom" className="h-[146px] w-full object-cover rounded-xl border border-white/10" loading="lazy" />
-              <span className="absolute bottom-2 right-2 bg-black/70 backdrop-blur text-bone text-[11px] font-medium px-2 py-1 rounded-md flex items-center gap-1"><ImagePlus size={11} /> +12 photos</span>
-            </div>
-          </div>
-          <div className="col-span-3 sm:hidden grid grid-cols-2 gap-2">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80&auto=format&fit=crop" alt="Living room" className="h-[110px] w-full object-cover rounded-lg border border-white/10" loading="lazy" />
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80&auto=format&fit=crop" alt="Bedroom" className="h-[110px] w-full object-cover rounded-lg border border-white/10" loading="lazy" />
+      <div className="grid lg:grid-cols-[1.16fr_0.84fr]">
+        <div className="grid grid-cols-2 grid-rows-[minmax(240px,1fr)_110px] lg:grid-cols-3 lg:grid-rows-2 gap-2 p-3 min-h-[390px] lg:min-h-[440px] bg-night-900">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80&auto=format&fit=crop" alt="House exterior" className="col-span-2 lg:col-span-2 row-span-1 lg:row-span-2 h-full min-h-[240px] w-full object-cover rounded-xl" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80&auto=format&fit=crop" alt="Living room" className="h-full min-h-[110px] w-full object-cover rounded-xl" loading="lazy" />
+          <div className="relative h-full min-h-[110px]">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80&auto=format&fit=crop" alt="Bedroom" className="h-full w-full object-cover rounded-xl" loading="lazy" />
+            <span className="absolute bottom-2 right-2 bg-black/70 backdrop-blur text-bone text-[11px] font-medium px-2 py-1 rounded-md flex items-center gap-1"><ImagePlus size={11} /> +12 photos</span>
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-start gap-4">
-          <div className="min-w-0 flex-1">
+        <div className="flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 p-5 sm:p-7 bg-night-850">
+          <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-medium px-2 py-1 rounded-full bg-volt text-[#0B0E10]">For Sale</span>
               <span className="text-[11px] font-medium px-2 py-1 rounded-full border border-white/15 text-fog">House</span>
             </div>
-            <h3 className="mt-2 text-[20px] sm:text-[24px] font-semibold tracking-tight leading-tight text-bone">1 Kanal Modern Designer House</h3>
-            <p className="mt-1 text-[13.5px] text-fog flex items-center gap-1.5"><MapPin size={14} /> Street 12, DHA Phase 6, Lahore</p>
-            <div className="mt-3 flex flex-wrap gap-2 text-[12.5px] text-bone">
-              <span className="inline-flex items-center gap-1.5 border border-white/10 rounded-lg px-2.5 py-1.5"><BedDouble size={14} /> 5 Beds</span>
-              <span className="inline-flex items-center gap-1.5 border border-white/10 rounded-lg px-2.5 py-1.5"><Bath size={14} /> 6 Baths</span>
-              <span className="inline-flex items-center gap-1.5 border border-white/10 rounded-lg px-2.5 py-1.5"><Ruler size={14} /> 1 Kanal · 4500 sq.ft</span>
-            </div>
-          </div>
-          <div className="w-full sm:w-[210px] shrink-0 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
-            <p className="text-[11px] uppercase tracking-[0.08em] text-neutral-500 font-medium">Price</p>
-            <p className="text-[22px] font-semibold tracking-tight font-mono mt-0.5 text-bone">PKR 8.5 Cr</p>
-            <p className="text-[12px] text-fog">Negotiable · Updated today</p>
-            <button className="mt-3 w-full inline-flex justify-center items-center gap-1.5 bg-volt text-[#0B0E10] text-[13.5px] font-medium py-2.5 rounded-lg hover:-translate-y-[1px] hover:bg-volt-bright transition-all">
-              <Phone size={14} /> Contact Agent
-            </button>
-            <button className="mt-2 w-full inline-flex justify-center items-center gap-1.5 bg-white/5 border border-white/10 text-bone text-[13.5px] font-medium py-2.5 rounded-lg hover:bg-white/10 transition-colors">
-              <Share2 size={14} /> Share link
-            </button>
-          </div>
-        </div>
+            <h3 className="mt-4 text-[22px] sm:text-[27px] font-semibold tracking-tight leading-[1.05] text-bone">1 Kanal Modern Designer House</h3>
+            <p className="mt-2 text-[13.5px] text-fog flex items-center gap-1.5"><MapPin size={14} /> Street 12, DHA Phase 6, Lahore</p>
 
-        <div className="mt-5 pt-5 border-t border-white/10 grid sm:grid-cols-[1fr_240px] gap-5">
-          <div>
-            <p className="text-[13px] font-semibold text-bone">About this property</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-fog">
-              Solid-construction designer house with imported fittings, Spanish tile roofing, home theatre and lush lawn. 2-minute drive from DHA Raya Commercial. All documents clear.
-            </p>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-[12.5px]">
-              {[['Type', 'House'], ['Area', '1 Kanal'], ['Possession', 'Immediate'], ['Documents', 'Clear']].map(([k, v]) => (
-                <div key={k} className="flex justify-between border-b border-white/10 py-1.5"><span className="text-neutral-500">{k}</span><span className="font-medium text-bone">{v}</span></div>
-              ))}
+            <div className="mt-7 grid grid-cols-2 gap-y-4 border-y border-white/10 py-5 text-[12.5px]">
+              <span className="flex items-center gap-2 text-fog"><BedDouble size={15} className="text-volt-soft" /> 5 Beds</span>
+              <span className="flex items-center gap-2 text-fog"><Bath size={15} className="text-volt-soft" /> 6 Baths</span>
+              <span className="flex items-center gap-2 text-fog"><Ruler size={15} className="text-volt-soft" /> 1 Kanal</span>
+              <span className="flex items-center gap-2 text-fog"><ShieldCheck size={15} className="text-volt-soft" /> Documents clear</span>
             </div>
+
+            <p className="mt-6 text-[11px] uppercase tracking-[0.08em] text-neutral-500 font-medium">Asking price</p>
+            <p className="mt-1 text-[26px] font-semibold tracking-tight font-mono text-bone">PKR 8.5 Cr</p>
+            <p className="mt-1 text-[12px] text-fog">Negotiable · Updated today</p>
           </div>
-          <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 h-fit">
-            <div className="flex items-center gap-3">
-              <span className="w-10 h-10 rounded-full bg-bone text-[#0B0E10] grid place-items-center text-[13px] font-semibold">AR</span>
+
+          <div className="mt-7">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-full bg-bone text-[#0B0E10] grid place-items-center text-[12px] font-semibold">AR</span>
               <div>
                 <p className="text-[13.5px] font-semibold text-bone">Ahmed Raza</p>
-                <p className="text-[12px] text-fog flex items-center gap-1"><ShieldCheck size={12} /> Verified agent</p>
+                <p className="text-[12px] text-fog flex items-center gap-1"><ShieldCheck size={12} /> Verified agent · Replies in 1 hour</p>
               </div>
             </div>
-            <p className="mt-3 text-[12px] text-neutral-500 font-mono">Typically replies in 1 hour</p>
+            <div className="grid grid-cols-2 gap-2">
+              <button className="inline-flex justify-center items-center gap-1.5 bg-volt text-[#0B0E10] text-[13.5px] font-medium py-2.5 rounded-lg hover:-translate-y-[1px] hover:bg-volt-bright transition-all">
+                <Phone size={14} /> Contact
+              </button>
+              <button className="inline-flex justify-center items-center gap-1.5 bg-white/5 border border-white/10 text-bone text-[13.5px] font-medium py-2.5 rounded-lg hover:bg-white/10 transition-colors">
+                <Share2 size={14} /> Share link
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -551,21 +533,20 @@ export default function App() {
       <div className="max-w-[1160px] mx-auto px-5 sm:px-8"><div className="h-px bg-white/10" /></div>
 
       {/* ===== 2. PRODUCT STORY ===== */}
-      <section id="product" className="scroll-mt-20 max-w-[1160px] mx-auto px-5 sm:px-8 py-20 sm:py-28">
-        <Reveal className="max-w-[680px]">
-          <h2 className="text-[30px] sm:text-[44px] font-semibold tracking-tightest leading-[1.08] text-balance text-bone">
-            From property inventory to client-ready link in seconds.
-          </h2>
-          <p className="mt-4 text-[15.5px] sm:text-[17px] text-fog leading-relaxed">
-            No more scattered WhatsApp forwards. Add once, organize everything, share one clean page your client actually trusts.
-          </p>
-        </Reveal>
+      <section id="product" className="scroll-mt-20 px-5 sm:px-8 lg:px-10 xl:px-16 2xl:px-20 py-16 sm:py-24">
+        <div className="mx-auto max-w-[1440px] grid lg:grid-cols-[minmax(280px,0.72fr)_minmax(0,1.28fr)] gap-12 xl:gap-20 items-start">
+          <div className="lg:pt-8">
+            <Reveal className="max-w-[490px]">
+              <p className="mb-4 flex items-center gap-2 text-[12px] font-mono text-volt-soft"><span className="h-px w-7 bg-volt/60" /> One clean workflow</p>
+              <h2 className="text-[32px] sm:text-[46px] font-semibold tracking-tightest leading-[1.04] text-balance text-bone">
+                From property inventory to client-ready link in seconds.
+              </h2>
+              <p className="mt-5 max-w-[440px] text-[15.5px] sm:text-[17px] text-fog leading-relaxed">
+                No more scattered WhatsApp forwards. Add once, organize everything, share one clean page your client actually trusts.
+              </p>
+            </Reveal>
 
-        <div className="mt-12 lg:mt-16 grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-14 items-start">
-          {/* steps */}
-          <div className="relative">
-            <div className="absolute left-[19px] top-4 bottom-8 w-px bg-white/10" aria-hidden />
-            <div className="flex flex-col gap-2">
+            <div className="relative mt-10 border-t border-white/10">
               {[
                 {
                   n: '01', icon: ImagePlus, title: 'Add your property',
@@ -584,37 +565,32 @@ export default function App() {
                 },
               ].map((s, i) => (
                 <Reveal key={s.n} delay={i * 0.08}>
-                  <div className="relative flex gap-4 sm:gap-5 rounded-2xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] p-4 -ml-4 transition-all group">
-                    <div className="relative z-10 shrink-0 w-10 h-10 rounded-xl bg-volt text-[#0B0E10] grid place-items-center group-hover:-translate-y-[1px] transition-transform">
+                  <div className="group grid grid-cols-[44px_1fr] gap-4 border-b border-white/10 py-5">
+                    <div className="mt-0.5 shrink-0 w-9 h-9 rounded-full border border-volt/40 text-volt grid place-items-center group-hover:bg-volt group-hover:text-[#0B0E10] transition-colors">
                       <s.icon size={17} strokeWidth={2} />
                     </div>
                     <div className="min-w-0 pt-0.5">
-                      <p className="font-mono text-[11.5px] text-neutral-500 tracking-wide">{s.n}</p>
+                      <p className="font-mono text-[11.5px] text-volt-soft tracking-wide">{s.n}</p>
                       <h3 className="mt-0.5 text-[17px] font-semibold tracking-tight text-bone">{s.title}</h3>
                       <p className="mt-1.5 text-[14px] leading-relaxed text-fog">{s.body}</p>
-                      <p className="mt-2 inline-flex items-center gap-1.5 text-[12px] font-mono bg-white/5 border border-white/10 rounded-md px-2 py-1 text-fog">{s.tag}</p>
+                      <p className="mt-2 text-[12px] font-mono text-neutral-500">{s.tag}</p>
                     </div>
                   </div>
-                  {i < 2 && (
-                    <div className="pl-[15px] py-1 text-white/20">
-                      <ChevronRight size={16} className="rotate-90" />
-                    </div>
-                  )}
                 </Reveal>
               ))}
             </div>
 
-            <Reveal delay={0.2} className="mt-6 ml-0 sm:ml-14 rounded-xl border border-white/10 bg-white/[0.03] p-4 flex gap-3 items-start">
-              <span className="shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-volt-soft grid place-items-center"><MessageCircle size={15} /></span>
+            <Reveal delay={0.2} className="mt-5 flex gap-3 items-start">
+              <MessageCircle size={17} className="mt-0.5 shrink-0 text-volt-soft" />
               <div className="text-[13px] leading-relaxed">
                 <p className="text-neutral-500 line-through decoration-white/20">12 photos + price + location in 8 WhatsApp messages…</p>
-                <p className="mt-1 font-medium flex items-center gap-1.5 text-bone">One PropLink page. <span className="font-mono font-normal text-fog bg-white/5 border border-white/10 rounded px-1.5 py-0.5 text-[12px]">proplink.app/p/…</span></p>
+                <p className="mt-1 font-medium flex items-center gap-1.5 text-bone">One PropLink page. <span className="font-mono font-normal text-fog">proplink.app/p/…</span></p>
               </div>
             </Reveal>
           </div>
 
-          {/* preview */}
-          <div className="lg:sticky lg:top-24">
+          <div className="relative lg:sticky lg:top-24">
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-[radial-gradient(70%_55%_at_55%_45%,rgba(200,255,0,0.08),transparent_72%)]" />
             <PublicPageMockup />
             <Reveal delay={0.15} className="mt-4 flex items-center justify-between px-1">
               <p className="text-[12.5px] text-fog">This is what your client opens — no login needed.</p>

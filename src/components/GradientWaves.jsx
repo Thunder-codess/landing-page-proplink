@@ -9,9 +9,9 @@ const hexToRgb = hex => {
 };
 
 const detailToSteps = detail => {
-  if (detail === 'low') return 40.0;
-  if (detail === 'high') return 110.0;
-  return 70.0;
+  if (detail === 'low') return 28.0;
+  if (detail === 'high') return 72.0;
+  return 48.0;
 };
 
 const vertex = `#version 300 es
@@ -165,9 +165,9 @@ const GradientWaves = ({
       antialias: false,
       // Battery: decorative backdrop runs on the integrated GPU.
       powerPreference: 'low-power',
-      // Perf: cap DPR at 1.5 — raymarching is fill-rate bound,
-      // and the difference is invisible behind a soft low-opacity backdrop.
-      dpr: Math.min(window.devicePixelRatio || 1, 1.5)
+      // Perf: this is a decorative, fill-rate-bound shader. A lower backing
+      // resolution keeps the page responsive on high-DPI laptops and phones.
+      dpr: Math.min(window.devicePixelRatio || 1, 1.25)
     });
 
     const gl = renderer.gl;
@@ -230,10 +230,14 @@ const GradientWaves = ({
     const currentMouse = [0.5, 0.5];
     const targetMouse = [0.5, 0.5];
 
+    let canvasRect = canvas.getBoundingClientRect();
+    const updateCanvasRect = () => {
+      canvasRect = canvas.getBoundingClientRect();
+    };
     const onPointerMove = e => {
-      const rect = canvas.getBoundingClientRect();
-      targetMouse[0] = (e.clientX - rect.left) / rect.width;
-      targetMouse[1] = 1.0 - (e.clientY - rect.top) / rect.height;
+      if (!enableMouseRef.current) return;
+      targetMouse[0] = (e.clientX - canvasRect.left) / canvasRect.width;
+      targetMouse[1] = 1.0 - (e.clientY - canvasRect.top) / canvasRect.height;
     };
     const onPointerLeave = () => {
       targetMouse[0] = 0.5;
@@ -241,7 +245,8 @@ const GradientWaves = ({
     };
     // Listen on window (not just the canvas) so parallax keeps working
     // where hero content sits above the canvas.
-    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('resize', updateCanvasRect, { passive: true });
     document.documentElement.addEventListener('pointerleave', onPointerLeave);
 
     let raf = 0;
@@ -249,7 +254,14 @@ const GradientWaves = ({
     let isPageVisible = !document.hidden;
     const t0 = performance.now();
 
+    const frameInterval = 1000 / 30;
+    let lastFrame = 0;
     const loop = t => {
+      if (t - lastFrame < frameInterval) {
+        raf = requestAnimationFrame(loop);
+        return;
+      }
+      lastFrame = t;
       program.uniforms.iTime.value = (t - t0) * 0.001;
       const tx = enableMouseRef.current ? targetMouse[0] : 0.5;
       const ty = enableMouseRef.current ? targetMouse[1] : 0.5;
@@ -294,6 +306,7 @@ const GradientWaves = ({
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('resize', updateCanvasRect);
       document.documentElement.removeEventListener('pointerleave', onPointerLeave);
       ctxMap.delete(container);
       try {
